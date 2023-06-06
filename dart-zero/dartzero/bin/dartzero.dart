@@ -28,4 +28,37 @@ void main(List<String> arguments) {
   print('Love ninfas? ${thisIsDart == true ? 'sim' : 'não'}');
   print('\nNow testing the Type Casting Lib:\n');
   typeCasting();
+
+  // List is based on type, but it's possible to mix data types.
+  // If you don't want types to be mixed, define the type with <type>
+  List<String> names = ['Ragnar', 'Odin', 'Bjorn', 'Thor'];
+  print(names.length);
+  print(names);
+  // Mixed Array
+  List<dynamic> things = [0, 3.5, 12, 'Thor', 'Trunks'];
+  print(things[things.length - 1]);
+  print('Filho do Ragnar é o ${names[2]}');
+
+  int forty = 40;
+  int fifty = 50;
+  String city = 'Amsterdam';
+
+  List<dynamic> somelist = [forty, fifty, city];
+  print(somelist);
+
+  // var, const and final
+  // var is used when you are not sure about the value of the variable
+  // If it will not be initialized, it is recomended to declare as dynamic var
+  dynamic something;
+  something = 'a string';
+  print('Something now is $something');
+  var mayChange = 'a value received from the api';
+  // mayChange = 'modificada'; // Ok to do.
+  print('Somethings a var is usable, maybe when $mayChange');
+  const String beto = 'Beto Costa';
+  // Final means it is declared only once - can only be set once.
+  final String squareFace;
+  squareFace = 'Square Face';
+  // The diference from const is that it can be created as empty and initialized with a value later.
+  print('$beto enjoyed animating $squareFace');
 }
