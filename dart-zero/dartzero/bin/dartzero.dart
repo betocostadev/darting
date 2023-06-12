@@ -6,7 +6,7 @@ import 'package:dartzero/conditions_and_loops.dart';
 void main(List<String> arguments) {
   print('==== This is DartZero====\n');
   print('The first start using Dart... Hello World?');
-  print('Calculate lib: ${dartzero.multiply()}!');
+  print('Multiply lib: ${dartzero.multiply()}!');
   print(ageAndHeight());
 
   int worldNumber = 42;
@@ -55,16 +55,22 @@ void main(List<String> arguments) {
   dynamic something;
   something = 'a string';
   print('Something now is $something');
+
   var mayChange = 'a value received from the api';
-  // mayChange = 'modificada'; // Ok to do.
+  // mayChange = 'modified var'; // Ok to do.
   print('Somethings a var is usable, maybe when $mayChange');
+
   const String beto = 'Beto Costa';
+  // It's possible to avoid adding the type for consts since you are initializing at the start.
+  // const beto = 'Beto Costa';
+
   // Final means it is declared only once - can only be set once.
   final String squareFace;
   squareFace = 'Square Face';
   // The diference from const is that it can be created as empty and initialized with a value later.
   print('$beto enjoyed animating $squareFace');
 
+  // Conditions lib
   print('\n====== Conditions in Dart ======\n');
   conditionsAndLoops();
 }
