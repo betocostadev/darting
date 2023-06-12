@@ -1,11 +1,12 @@
-import 'package:dartzero/dartzero.dart' as dartzero;
+import 'package:dartzero/multiply.dart' as dartzero;
 import 'package:dartzero/age_height.dart';
 import 'package:dartzero/type_casting.dart';
+import 'package:dartzero/conditions_and_loops.dart';
 
 void main(List<String> arguments) {
   print('==== This is DartZero====\n');
   print('The first start using Dart... Hello World?');
-  print('Calculate lib: ${dartzero.calculate()}!');
+  print('Calculate lib: ${dartzero.multiply()}!');
   print(ageAndHeight());
 
   int worldNumber = 42;
@@ -27,6 +28,7 @@ void main(List<String> arguments) {
   print('Is dart croxy? $croxura');
   print('Love ninfas? ${thisIsDart == true ? 'sim' : 'não'}');
   print('\nNow testing the Type Casting Lib:\n');
+
   typeCasting();
 
   // List is based on type, but it's possible to mix data types.
@@ -43,6 +45,7 @@ void main(List<String> arguments) {
   int fifty = 50;
   String city = 'Amsterdam';
 
+  // <dynamic> is costly, better to avoid unless necessary
   List<dynamic> somelist = [forty, fifty, city];
   print(somelist);
 
@@ -61,4 +64,7 @@ void main(List<String> arguments) {
   squareFace = 'Square Face';
   // The diference from const is that it can be created as empty and initialized with a value later.
   print('$beto enjoyed animating $squareFace');
+
+  print('\n====== Conditions in Dart ======\n');
+  conditionsAndLoops();
 }

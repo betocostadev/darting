@@ -1,4 +1,4 @@
-import 'package:dartzero/dartzero.dart';
+import 'package:dartzero/multiply.dart';
 import 'package:test/test.dart';
 
 void main() {
