@@ -24,5 +24,10 @@ void listMethods() {
   // Where uses test cases.
   // Where does not return a list, it returns a iterable. See below
   Iterable biggerNames = list.where((element) => element.length > 4);
+  // Iterable biggerNames = list.where((element) => element.length > 4).toList();
   print(biggerNames.toList());
+
+  // Where can also be used to get the first or last element that passes the test
+  print(list.firstWhere((element) => element.length > 4));
+  print(list.lastWhere((element) => element.length > 4));
 }
