@@ -1,3 +1,4 @@
+import 'package:dartzero/list_methods.dart';
 import 'package:dartzero/multiply.dart' as dartzero;
 import 'package:dartzero/age_height.dart';
 import 'package:dartzero/type_casting.dart';
@@ -73,4 +74,7 @@ void main(List<String> arguments) {
   // Conditions lib
   print('\n====== Conditions in Dart ======\n');
   conditionsAndLoops();
+
+  // List Methods lib
+  listMethods();
 }
