@@ -2,20 +2,21 @@ void conditionsAndLoops() {
   // Basic if
   int minAge = 18;
   int userAge = 37;
-  bool allowed = false;
+  // As a good practice in Dart, booleans start with "is"
+  bool isAllowed = false;
 
   void meetsAge() {
     if (userAge >= minAge) {
-      allowed = true;
+      isAllowed = true;
     } else {
-      allowed = false;
+      isAllowed = false;
     }
   }
 
   meetsAge();
 
   print(
-      'Min age is $minAge, and user age is $userAge, the user is ${allowed ? 'allowed' : 'not allowed'}');
+      'Min age is $minAge, and user age is $userAge, the user is ${isAllowed ? 'allowed' : 'not allowed'}');
 
   print('\nOdd or even?');
 
