@@ -5,7 +5,13 @@ void main() {
   test('recursive-factorial', () {
     expect(funcFactorial(5), 120);
   });
-  test('recursive-sum', () {
-    expect(recursiveSum(0, [10, 20]), 30);
+  test('recursive-sum-zero-length', () {
+    expect(recursiveSum(3, []), 3);
+  });
+  test('recursive-sum-length-start-zero', () {
+    expect(recursiveSum(0, [10, 20, 30]), 60);
+  });
+  test('recursive-sum-length-start-seventy', () {
+    expect(recursiveSum(10, [10, 20, 30]), 70);
   });
 }

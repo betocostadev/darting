@@ -15,12 +15,12 @@ num recursiveSum(int startValue, List numbers) {
 
   num calc(num sum, int pointer, List numbers) {
     if (numbers.length == 1) {
-      return numbers[0];
+      return numbers[0] + startValue;
     } else {
       if (pointer >= numbers.length) {
         return sum;
       } else {
-        return sum += numbers[pointer] + calc(sum, pointer + 1, numbers);
+        return sum = numbers[pointer] + calc(sum, pointer + 1, numbers);
       }
     }
   }
