@@ -1,5 +1,6 @@
 // import 'dart:ffi';
 import 'package:dart_objects/recursion.dart';
+import 'package:dart_objects/objs_inheritance.dart';
 
 void main(List<String> arguments) {
   print('====== Dart Objects & Functions ======');
@@ -7,12 +8,7 @@ void main(List<String> arguments) {
   // Creating a fruit based on the class Fruit created below
   Fruit fruit01 = Fruit('apple', 254.5, 'light red', 'sweet', 33);
   Fruit fruit02 = Fruit('orange', 196.0, 'orange', 'citrus', 29);
-  Fruit fruit03 = Fruit.named(
-      name: 'uva',
-      weight: 28.5,
-      color: 'purple',
-      flavor: 'sweet',
-      daysAfterHarvest: 20);
+  Fruit fruit03 = Fruit('grape', 43.6, 'purple', 'sweet', 20);
 
   // print(fruit01) - Instance of 'Fruit'
 
@@ -36,6 +32,7 @@ void main(List<String> arguments) {
 
   fruit03.sayIsRipe(25);
   print(fruit02.isFruitRipe(25));
+  fruit03.makeJuice();
 
   // Recursion - lib/recursion.dart
   print('\n=== Recursion ===');
@@ -51,26 +48,15 @@ void main(List<String> arguments) {
       'The sum of the elements of the Array $numbers02 with a start value of 300 is ${recursiveSum(300, numbers02)}');
 }
 
-// Now using objects - Classes
-class Fruit {
-  String name;
-  double weight;
-  String color;
+class Fruit extends Food {
   String flavor;
   int daysAfterHarvest;
   bool? isRipe;
-  // Adding the constructor below, the unitialized variables above
-  // will not generate errors
-  Fruit(this.name, this.weight, this.color, this.flavor, this.daysAfterHarvest,
-      {this.isRipe});
 
-  // Adding a name constructor to require the values
-  Fruit.named(
-      {required this.name,
-      required this.weight,
-      required this.color,
-      required this.flavor,
-      required this.daysAfterHarvest});
+  Fruit(String name, double weight, String color, this.flavor,
+      this.daysAfterHarvest,
+      {this.isRipe})
+      : super(name, weight, color);
 
   bool isFruitRipe(int daysToRipe) {
     return isRipe ??= daysAfterHarvest >= daysToRipe;
@@ -80,7 +66,50 @@ class Fruit {
     print(
         'The $name was harvested $daysAfterHarvest days ago and needs $daysToRipe, so the fruit is ${isFruitRipe(daysToRipe) ? '' : 'not '}ripe');
   }
+
+  void makeJuice() {
+    print('$name juice ready to drink!');
+  }
 }
+
+// Now using objects - Classes
+// The base object created previously
+// class Fruit {
+//   String name;
+//   double weight;
+//   String color;
+//   String flavor;
+//   int daysAfterHarvest;
+//   bool? isRipe;
+//   // Adding the constructor below, the unitialized variables above
+//   // will not generate errors
+//   Fruit(this.name, this.weight, this.color, this.flavor, this.daysAfterHarvest,
+//       {this.isRipe});
+
+//   // Adding a name constructor to require the values
+//   Fruit.named(
+//       {required this.name,
+//       required this.weight,
+//       required this.color,
+//       required this.flavor,
+//       required this.daysAfterHarvest});
+
+//   bool isFruitRipe(int daysToRipe) {
+//     return isRipe ??= daysAfterHarvest >= daysToRipe;
+//   }
+
+//   sayIsRipe(int daysToRipe) {
+//     print(
+//         'The $name was harvested $daysAfterHarvest days ago and needs $daysToRipe, so the fruit is ${isFruitRipe(daysToRipe) ? '' : 'not '}ripe');
+//   }
+// }
+
+// Fruit fruit03 = Fruit.named(
+//     name: 'grape',
+//     weight: 28.5,
+//     color: 'purple',
+//     flavor: 'sweet',
+//     daysAfterHarvest: 20);
 
 // SOME FUNCTIONS
 

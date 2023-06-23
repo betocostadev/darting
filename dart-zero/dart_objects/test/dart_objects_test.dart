@@ -11,7 +11,7 @@ void main() {
   test('recursive-sum-length-start-zero', () {
     expect(recursiveSum(0, [10, 20, 30]), 60);
   });
-  test('recursive-sum-length-start-seventy', () {
+  test('recursive-sum-length-start-ten', () {
     expect(recursiveSum(10, [10, 20, 30]), 70);
   });
 }
