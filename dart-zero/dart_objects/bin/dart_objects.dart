@@ -1,13 +1,14 @@
 // import 'dart:ffi';
 import 'package:dart_objects/recursion.dart';
 import 'package:dart_objects/objs_inheritance.dart';
+import 'package:dart_objects/some_functions.dart';
 
 void main(List<String> arguments) {
   print('====== Dart Objects & Functions ======');
 
   // Creating a fruit based on the class Fruit created below
   Fruit fruit01 = Fruit('apple', 254.5, 'light red', 'sweet', 33);
-  Fruit fruit02 = Fruit('orange', 196.0, 'orange', 'citrus', 29);
+  Fruit fruit02 = Fruit('orange', 296.0, 'orange', 'citrus', 29);
   Fruit fruit03 = Fruit('grape', 43.6, 'purple', 'sweet', 20);
 
   // print(fruit01) - Instance of 'Fruit'
@@ -15,8 +16,8 @@ void main(List<String> arguments) {
   // Calling the function with arguments
   // funcShowIsGoodToEat(name, daysAfterHarvest, weight: weight);
   // funcShowIsGoodToEat("Apple", 6, color: 'light red', weight: 230.5);
-
   // print(toString(name: name, weight: weight, daysHarvest: daysAfterHarvest));
+
   print(toString(
       name: fruit01.name,
       weight: fruit01.weight,
@@ -30,9 +31,21 @@ void main(List<String> arguments) {
       weight: fruit03.weight,
       daysHarvest: fruit03.daysAfterHarvest));
 
-  fruit03.sayIsRipe(25);
   print(fruit02.isFruitRipe(25));
+  print(fruit03.sayIsRipe(15));
   fruit03.makeJuice();
+
+  Vegetable veg01 = Vegetable('Brocolli', 10.2, 'green', isNeedsCooking: false);
+  print('${veg01.name} needs cooking? ${veg01.isNeedsCooking}');
+
+  CitrusFruit citrus01 =
+      CitrusFruit('lemon', 170.5, 'green', 'citrus', 20, 7.5);
+
+  citrus01.printSourLevel();
+
+  OilSeeds oilSeeds01 = OilSeeds('Flax', 8.2, 'brown', 'oil', 30, 40);
+
+  oilSeeds01.printPercentOilLevel();
 
   // Recursion - lib/recursion.dart
   print('\n=== Recursion ===');
@@ -64,11 +77,35 @@ class Fruit extends Food {
 
   sayIsRipe(int daysToRipe) {
     print(
-        'The $name was harvested $daysAfterHarvest days ago and needs $daysToRipe, so the fruit is ${isFruitRipe(daysToRipe) ? '' : 'not '}ripe');
+        'The $name was harvested $daysAfterHarvest days ago and needs $daysToRipe days to be ripe, so the fruit is ${isFruitRipe(daysToRipe) ? '' : 'not '}ripe');
   }
 
   void makeJuice() {
     print('$name juice ready to drink!');
+  }
+}
+
+class CitrusFruit extends Fruit {
+  double sourLevel;
+
+  CitrusFruit(String name, double weight, String color, String flavor,
+      int daysAfterHarvest, this.sourLevel)
+      : super(name, weight, flavor, color, daysAfterHarvest);
+
+  void printSourLevel() {
+    print('The $name sour level is $sourLevel/10');
+  }
+}
+
+class OilSeeds extends Fruit {
+  double percentNaturalOil;
+
+  OilSeeds(String name, double weight, String color, String flavor,
+      int daysAfterHarvest, this.percentNaturalOil)
+      : super(name, weight, flavor, color, daysAfterHarvest);
+
+  void printPercentOilLevel() {
+    print('The $name oil level is $percentNaturalOil%');
   }
 }
 
@@ -111,64 +148,3 @@ class Fruit extends Food {
 //     flavor: 'sweet',
 //     daysAfterHarvest: 20);
 
-// SOME FUNCTIONS
-
-String toString(
-    {required String name,
-    required double weight,
-    required daysHarvest,
-    int daysToRipe = 30,
-    bool? isRipe}) {
-  // Bad way to add a value to a possibly null value
-  // if (isRipe == null) {
-  //   isRipe = daysHarvest >= daysToRipe;
-  // }
-  // Good way https://dart-lang.github.io/linter/lints/prefer_conditional_assignment.html
-  isRipe ??= daysHarvest >= daysToRipe;
-
-  String ripeText = isRipe != null && !isRipe ? 'not ' : '';
-
-  String result =
-      "The $name weights $weight grams! It has been harversted $daysHarvest days ago and needs $daysToRipe to be ripe, so, the $name is ${ripeText}ripe!";
-
-  return result;
-}
-
-int funcDaysToBeReady(int daysHarvest) {
-  int daysToRipe = 30;
-  int daysLeft = daysToRipe - daysHarvest;
-  return daysLeft;
-}
-
-bool funcBeReady(int days) {
-  if (days >= 10) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-// Func params
-// Positional - Must
-// Named - Optional
-// Params - Default
-// Modifier - Required
-
-// name, days = Positional (required)
-// {String? color} Named (optional)
-// function call with named params should use the arguments like: funcShowIsGoodToEat(grapes, 30, color: "red");
-void funcShowIsGoodToEat(String name, int days,
-    {String? color, String flavor = 'not informed', required double weight}) {
-  if (funcBeReady(days) == true) {
-    print('The $name fruit is good to be eaten.');
-  } else {
-    print('The $name fruit is not good to be eaten.');
-  }
-
-  if (color != null) {
-    print('$name color is $color.');
-  }
-
-  print("$name flavor is $flavor.");
-  print("$name weight is $weight gr.");
-}

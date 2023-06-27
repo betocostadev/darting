@@ -18,7 +18,8 @@ class Food {
 class Vegetable extends Food {
   bool isNeedsCooking;
 
-  Vegetable(String name, double weight, String color, this.isNeedsCooking)
+  Vegetable(String name, double weight, String color,
+      {required this.isNeedsCooking})
       : super(name, weight, color);
 
   void cook() {
@@ -28,16 +29,4 @@ class Vegetable extends Food {
       print('$name is cooked already!');
     }
   }
-}
-
-class CitrusFruit {
-  double sourLevel;
-
-  CitrusFruit(this.sourLevel);
-}
-
-class OilSeeds {
-  double percentNaturalOil;
-
-  OilSeeds(this.percentNaturalOil);
 }
