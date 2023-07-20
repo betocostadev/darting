@@ -15,7 +15,7 @@ class Food {
 
 // Inheriting classes
 // SubClass
-class Vegetable extends Food {
+class Vegetable extends Food implements Cake {
   bool isNeedsCooking;
 
   Vegetable(String name, double weight, String color,
@@ -29,4 +29,36 @@ class Vegetable extends Food {
       print('$name is cooked already!');
     }
   }
+
+  // Needed since we are using the "implements Cake" abstract class
+  @override
+  void splitIngredients() {
+    // TODO: implement splitIngredients
+    print('Spliting ingredients...');
+  }
+
+  @override
+  void makeDough() {
+    // TODO: implement makeDough
+    print('Making Dough to cook it...');
+  }
+
+  @override
+  void bake() {
+    // TODO: implement bake
+    print('Baking...');
+  }
+}
+
+// ====== ABSTRACT CLASSES =======
+// Also know as Interfaces
+// To understand it, think about a fruit. You know a banana is a fruit. The fruit is
+// the abstract that can have a banana, a pineapple, etc.
+
+abstract class Cake {
+  void splitIngredients() {}
+
+  void makeDough() {}
+
+  void bake() {}
 }
