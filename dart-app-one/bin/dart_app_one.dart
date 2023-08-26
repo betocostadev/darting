@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dart_app_one/dart_app_one.dart' as dart_app_one;
+import 'package:dart_app_one/funcinfunc.dart' as funcInFunc;
 
 void main(List<String> arguments) {
   print('Hello world: ${dart_app_one.calculate()}!');
@@ -51,6 +52,13 @@ void main(List<String> arguments) {
   print(text2.substring(10, 14));
   print(text2.substring(24));
   print(text2.substring(text2.indexOf('but')));
+
+  print(
+      '\n ==== Using a function to call another function as a parameter ====');
+
+  funcInFunc.defaultFunc();
+  print(funcInFunc.callAndOperate(10, operation: 'increment'));
+  print(funcInFunc.callAndOperate(20, operation: 'decrement'));
 
   print('\n===== Map data type =====');
 
