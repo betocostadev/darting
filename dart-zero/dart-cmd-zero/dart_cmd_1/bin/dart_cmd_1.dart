@@ -4,7 +4,7 @@ void main(List<String> arguments) {
   print('===== DART - CMD =====');
   // print('Hello world: ${dart_cmd_1.calculate()}!');
 
-  int age;
+  var age;
   do {
     print("Whats your age?");
     String? input = stdin.readLineSync();
