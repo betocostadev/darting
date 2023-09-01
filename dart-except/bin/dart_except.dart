@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-// import 'package:dart_except/dart_except.dart' as dart_except;
+import 'package:dart_except/dart_except.dart' as dart_except;
 
 void main(List<String> arguments) {
+  dart_except.execute();
+
   print('Type a number:');
   var line = stdin.readLineSync(encoding: utf8);
   try {
