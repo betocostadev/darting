@@ -6,9 +6,9 @@ void listMethods() {
   List<String> sublist = list.sublist(0, 2);
   print(sublist);
 
-  list.forEach((element) {
+  for (var element in list) {
     print(element.toUpperCase());
-  });
+  }
 
   print('Is Thor in this list? ${list.contains('Thor')}');
 
@@ -18,7 +18,7 @@ void listMethods() {
   print(sum);
 
   String odinSon =
-      sublist.reduce((value, element) => value + ' is a son of ' + element);
+      sublist.reduce((value, element) => '$value is a son of $element');
   print(odinSon);
 
   // Where uses test cases.

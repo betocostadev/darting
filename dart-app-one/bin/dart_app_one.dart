@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dart_app_one/dart_app_one.dart' as dart_app_one;
+// ignore: library_prefixes
 import 'package:dart_app_one/funcinfunc.dart' as funcInFunc;
 
 void main(List<String> arguments) {
@@ -65,7 +66,8 @@ void main(List<String> arguments) {
   // Map can be somewhat like an Object in JS.
   // The map below has keys as Strings, and values as anything (Dynamic)
   // Also called dicts, dictionary
-  Map<String, dynamic> map1 = Map<String, dynamic>();
+  // Map<String, dynamic> map1 = Map<String, dynamic>();
+  Map<String, dynamic> map1 = <String, dynamic>{};
 
   map1 = {'balls': 10, 'person': 'Rob'};
   print(map1);

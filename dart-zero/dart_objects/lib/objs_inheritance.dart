@@ -33,19 +33,16 @@ class Vegetable extends Food implements Cake {
   // Needed since we are using the "implements Cake" abstract class
   @override
   void splitIngredients() {
-    // TODO: implement splitIngredients
     print('Spliting ingredients...');
   }
 
   @override
   void makeDough() {
-    // TODO: implement makeDough
     print('Making Dough to cook it...');
   }
 
   @override
   void bake() {
-    // TODO: implement bake
     print('Baking...');
   }
 }
