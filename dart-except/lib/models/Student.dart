@@ -32,7 +32,6 @@ class Student {
   }
 
   bool isAproved(double minAverage) {
-    var average = getAverage();
     return getAverage() >= minAverage;
   }
 }
