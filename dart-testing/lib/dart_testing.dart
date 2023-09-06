@@ -10,3 +10,7 @@ double getDiscount(double value, double discount, bool isPercent) {
   }
   return value - discount;
 }
+
+String convertToUpper(String text) {
+  return text.toUpperCase();
+}

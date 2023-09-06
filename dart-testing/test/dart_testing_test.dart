@@ -1,6 +1,12 @@
+import 'package:dart_testing/classes/viacep.dart';
 import 'package:dart_testing/dart_testing.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
+import 'dart_testing_test.mocks.dart';
+
+@GenerateMocks([mockViaCep])
 void main() {
   test('get discount using percentage', () {
     expect(getDiscount(500, 10, true), equals(450));
@@ -56,4 +62,57 @@ void main() {
       });
     }
   });
+
+  // STRING TESTS
+
+  test('Convert string to UpperCase string', () {
+    expect(convertToUpper('ball'), equals('BALL'));
+  });
+
+  test('Convert string with false positive', () {
+    expect(convertToUpper('DiO'), equalsIgnoringCase('dio'));
+  });
+
+  // HTTP TESTS
+
+  // Real test
+  test('Get HTTP data using CEP', () async {
+    var viaCEP = viaCep();
+    var body = await viaCEP.getDataByCEP('01001000');
+    print(body);
+
+    expect(body['bairro'], equals('Sé'));
+    expect(body['logradouro'], equalsIgnoringCase('praça da sé'));
+  });
+
+  // Same test, but using mock data
+  test('Get HTTP data using CEP - With mock data', () async {
+    MockmockViaCep mockMockViaCEP = MockmockViaCep();
+    when(mockMockViaCEP.getDataByCEP('01001000'))
+        .thenAnswer((realInvocation) => Future.value({
+              "cep": "01001-000",
+              "logradouro": "Praça da Sé",
+              "complemento": "lado ímpar",
+              "bairro": "Sé",
+              "localidade": "São Paulo",
+              "uf": "SP",
+              "ibge": "3550308",
+              "gia": "1004",
+              "ddd": "11",
+              "siafi": "7107"
+            }));
+    var body = await mockMockViaCEP.getDataByCEP('01001000');
+    print(body);
+
+    expect(body['bairro'], equals('Sé'));
+    expect(body['logradouro'], equalsIgnoringCase('praça da sé'));
+  });
 }
+
+// Intermediate class to mock viacep http calls
+// To start generating the new classes for mocking add the Generate Mocks at the
+// top of the file as:
+// @GenerateMocks([mockViaCep])
+// Then run dart run build_runner build --delete-conflicting-outputs
+// It will generate the file _test.mocks.dart
+class mockViaCep extends Mock implements viaCep {}
